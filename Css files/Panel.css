@@ -1,0 +1,88 @@
+body{
+    background-color: #04172d;
+    overflow-y: hidden;
+}
+.Panelcontainer{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    height: 20vh;
+    width: 90vw;
+    margin-left: 10vw; /* Creates space to the left of the element */
+    /* margin-top: -170px; */
+    /* background-color: red; */
+}
+
+
+ 
+.form-container input{
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    background-color: transparent;
+    border-color: #1b2837;
+    margin-top: 50px;
+}
+
+
+.form-container button{
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    background-color: #1b2837;
+    border-radius: 10px;
+    border: 1px;
+    color: grey;
+
+}
+
+.form-container h1{
+    color: whi;
+    margin-top: 20px;
+    margin-left: 15pc;
+}
+.panels{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 80vh; */
+    width: 90vw;
+}
+.panel{
+    width: 25%;
+    margin: 30px;
+    background-color: #213743;
+    border: 1px solid gray;
+    padding:20px;
+    border-radius: 20px;
+    color: white;
+}
+
+/* .Panel-grid{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+} */
+
+#panelContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 28vw;
+    margin-top: 40px;
+}
+
+#panelContainer:nth-child(3n + 1){
+    clear: left ;
+}
+
+.panel h3{
+    padding: 10px 0;
+    font-size: 20px;
+}
+.panel p{
+    font-size: 15px;
+}
+.panel span{
+    font-size: 15px;
+}

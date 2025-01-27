@@ -1,0 +1,179 @@
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel</title>
+    <link rel="stylesheet" href="/Css files/Main.css">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="/Css files/Panel.css">
+
+  </head>
+
+  <body>
+    <button class="sidebar-menu-button">
+      <span class="material-symbols-rounded">menu</span>
+    </button>
+
+    <aside class="sidebar">
+      <!-- Sidebar Header -->
+      <header class="sidebar-header">
+        <a href="#" class="header-logo">
+          <img src="/Stake_logo.png" alt="CodingNepal" class="Logo" />
+        </a>
+        <button class="sidebar-toggler">
+          <span class="material-symbols-rounded">chevron_left</span>
+        </button>
+      </header>
+      <nav class="sidebar-nav">
+        <!-- Primary Top Nav -->
+        <ul class="nav-list primary-nav">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link">
+              <span class="material-symbols-rounded">insights</span>
+              <span class="nav-label">Dashboard</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a href="./index.html" class="nav-link dropdown-title">Dashboard</a></li>
+            </ul>
+          </li>
+          <!-- Dropdown -->
+          <li class="nav-item dropdown-container">
+            <a href="./Panel.html" class="nav-link">
+              <span class="material-symbols-rounded">view_quilt</span>
+              <span class="nav-label">Panels</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="material-symbols-rounded">workspace_premium</span>
+              <span class="nav-label">91 Club</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link dropdown-title">Notifications</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="material-symbols-rounded">monetization_on</span>
+              <span class="nav-label">Casino</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link dropdown-title">Casino</a></li>
+            </ul>
+          </li>
+          <!-- Dropdown -->
+          <li class="nav-item dropdown-container">
+            <a href="#" class="nav-link dropdown-toggle">
+              <span class="material-symbols-rounded">crown</span>
+              <span class="nav-label">VIP Clubs</span>
+              <span class="dropdown-icon material-symbols-rounded">keyboard_arrow_down</span>
+            </a>
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link dropdown-title">VIP Clubs</a></li>
+              <li class="nav-item"><a href="#" class="nav-link dropdown-link">Luxury Club</a></li>
+              <li class="nav-item"><a href="#" class="nav-link dropdown-link">Elite Club</a></li>
+              <li class="nav-item"><a href="#" class="nav-link dropdown-link">Exclusive Club</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="material-symbols-rounded">settings</span>
+              <span class="nav-label">Settings</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link dropdown-title">Settings</a></li>
+            </ul>
+          </li>
+        </ul>
+        Secondary Bottom Nav
+        <ul class="nav-list secondary-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="material-symbols-rounded">help</span>
+              <span class="nav-label">Support</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link dropdown-title">Support</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="material-symbols-rounded">logout</span>
+              <span class="nav-label">Sign Out</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link dropdown-title">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    
+    <div class="Panelcontainer">
+      <div class="form-container">
+      <h1>Stake Panels</h1>
+        <input type="text" id="name" placeholder="Enter Name">
+        <input type="email" id="email" placeholder="Enter UPI">
+        <input type="number" id="ContactNo" placeholder="Contact Number">
+        <button onclick="addPanel()">Add Panel</button>
+      </div>
+
+    </div>
+
+    <div class="container" id="panelContainer">
+      <!-- Panels will be added here dynamically -->
+    </div>
+
+  </body>
+  <script src="/Javascript Files/Main.js"></script>
+  <script>
+  function addPanel() {
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const Contact = document.getElementById('ContactNo');
+      const panelContainer = document.getElementById('panelContainer');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const contact = Contact.value.trim();
+
+      if (!name || !email) {
+          alert('Please fill out both fields.');
+          return;
+      }
+
+      // Mask the contact number (e.g., show first 5 digits and mask the rest)
+      const maskedContact = contact.slice(0, 5) + '*'.repeat(contact.length - 5);
+
+      // Mask the email (show first letter, domain, and replace the rest with *)
+      const emailParts = email.split('@');
+      const emailUsername = emailParts[0];
+      const emailDomain = emailParts[1];
+      const maskedEmail = 
+          emailUsername[0] + '*'.repeat(emailUsername.length - 1) + '@' + emailDomain;
+
+      const panel = document.createElement('div');
+      panel.className = 'panel';
+      panel.innerHTML = `
+                  <h3>${name}</h3>
+                  <p> UPI: ${maskedEmail}</p>
+                  <span> No:${maskedContact}</span>
+              `;
+
+      panelContainer.appendChild(panel);
+
+      // Clear input fields
+      nameInput.value = '';
+      emailInput.value = '';
+      Contact.value = '';
+  }
+
+
+
+  </script>
+
+  </html>
